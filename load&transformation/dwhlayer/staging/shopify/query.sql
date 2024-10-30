@@ -43,7 +43,7 @@ customer_and_blank AS
          ELSE
             line_item2_price 
       END
-      AS unit_price_item2, 		--to convert in numeric form
+      AS unit_price_item2,--- TO REPLACE BLANK WITH NULL. NOT ALWAYS 'line_item_price' COL HAS SECOND STRING SO THERE ARE BLANK VALUES IN 'line_item2_price' COL AND THESE VALUES WILL NOT ALLOW TO CONVERT COL TO NUMERIC DATATYPE IN FURTHER STEPS
       CASE
          WHEN
             line_item2_quantity = '' 
@@ -52,7 +52,7 @@ customer_and_blank AS
          ELSE
             line_item2_quantity 
       END
-      AS quantity_item2, 
+      AS quantity_item2,--- TO REPLACE BLANK WITH NULL. NOT ALWAYS 'line_item_quantity' COL HAS SECOND STRING SO THERE ARE BLANK VALUES IN 'line_item2_quantity' COL AND THESE VALUES WILL NOT ALLOW TO CONVERT COL TO NUMERIC DATATYPE IN FURTHER STEPS
       CASE
          WHEN
             refund_amount = '' 
@@ -61,7 +61,7 @@ customer_and_blank AS
          ELSE
             refund_amount 
       END
-      AS refund, 
+      AS refund, --- TO REPLACE BLANK WITH NULL. THERE ARE BLANK VALUES IN COL AND THESE VALUES WILL NOT ALLOW TO CONVERT COL TO NUMERIC DATATYPE IN FURTHER STEPS
       CASE
          WHEN
             prev_order is null 
@@ -70,7 +70,7 @@ customer_and_blank AS
         ELSE
             'return customer' 
       END
-      AS customer_type 
+      AS customer_type --- IF CUST HAS ORDERED IN PAST THEN RETURN CUST ELSE NEW CUST
    FROM
       extract_value 
 )
