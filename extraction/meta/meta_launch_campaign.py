@@ -4,9 +4,8 @@ import psycopg2
 import csv
 
 # Define your ad account ID and access token
-campaign_id = '120208252136890302'  # Replace with your actual ad account ID
-access_token = 'EAAlDMc8HPp0BO2GxOkMxKUWAhNdzrTsLTW17Wl574PDPDZBFea1KKbA07KLln9ZBVIbOwM2xjA2nSlH9DY9Ctb9zgqjudZBajvYUdDEXT5gThvV8nnJEI4xwF9tIaHRSwsBGlj1w8oHKRtae4VWhZAP8xQactZCcuJB8ZAJUWRo8M1oQUJYfMwkDRA'  # Replace with your actual access token
-
+campaign_id = '*****'  # Replace with your actual ad account ID
+access_token = '*****'
 # Define the fields you want to fetch
 fields = [
     'account_currency,account_name,ad_id,ad_name,adset_id,'
