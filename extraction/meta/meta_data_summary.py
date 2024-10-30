@@ -1,3 +1,5 @@
+#OUTPUT OF THE CODE WAS USED TO CROSS CHECK DATA RETRIEVED ON DATE & CAMPAIGN LEVEL
+
 import requests
 import pandas as pd
 import psycopg2
