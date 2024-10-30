@@ -1,4 +1,0 @@
-raw_meta_campaign table is created in raw layer of PostgreSQL DWH. 
-Steps taken to create table are:
-Created table schema in PostgreSQL through the interface by adding column names and data types in order 
-Loaded data in the table through csv that is extracted from Insights API through Python and then connected to PostgreSQL 
