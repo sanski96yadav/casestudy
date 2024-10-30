@@ -202,7 +202,7 @@ nulltozero AS ---TO ASSIGN 0 TO NULL VALUES
    FROM
       calculation 
 )
-, revenuecalc AS  
+, revenuecalc AS  ---calculate columns
 (
    SELECT
       created_at,
@@ -215,24 +215,24 @@ nulltozero AS ---TO ASSIGN 0 TO NULL VALUES
       (
          order_amount - discount + shipping
       )
-      AS gross_revenue,
+      AS gross_revenue,---USED KLAR LOGIC PROVIDED ON WEBSITE AND NOT SHOPIFY'S
       CASE
          WHEN
             financial_status = 'refunded' 
          THEN
-(order_amount - discount + shipping) 
+(order_amount - discount + shipping)---USED KLAR LOGIC PROVIDED ON WEBSITE AND NOT SHOPIFY'S. GROSS REVENUE IS REFUNDED IN CASE OF TOTAL REFUND
          WHEN
             financial_status = 'partially_refunded'
          THEN
-            refund_value 
+            refund_value---IN CASE OF PARTIAL REFUND SOME PART OF GROSS REVENUE IS RETURNED SO VALUE IS TAKEN DIRECTLY FROM COL
          ELSE
             0 
       END
-      AS return_value 		--case when financial_status<>'refunded' then total_tax else 0 end as taxes
+      AS return_value 		
    FROM
       discountvalues 
 )
-, tax_calc AS  
+, tax_calc AS  ---CALCULATES TAX FOR EACH ROW
 (
    SELECT
       *,
@@ -240,13 +240,13 @@ nulltozero AS ---TO ASSIGN 0 TO NULL VALUES
          WHEN
             financial_status = 'refunded' 
          THEN
-            0 
+            0 ---TAXES ARE INCLUDED IN RETURN VALUE SO TO AVOID DOUBLE CALCULATION
          WHEN
             financial_status = 'partially_refunded' 
          THEN
-            round((gross_revenue - return_value) - ((gross_revenue - return_value) / 1.19), 2) 
+            round((gross_revenue - return_value) - ((gross_revenue - return_value) / 1.19), 2)---TAXES ARE INCLUDED IN RETURN VALUE SO TO AVOID DOUBLE CALCULATION THE PARTIAL RETURN VALUE IS SUBTRACTED. ASSUMED 19% VAT ON ALL ORDERS
          ELSE
-            round(gross_revenue - (gross_revenue / 1.19), 2) 
+            round(gross_revenue - (gross_revenue / 1.19), 2)---ASSUMED 19% VAT ON ALL ORDERS. FOLLOWED CALC LOGIC GIVEN ON KLAR WEBSITE. BASE AMOUNT + TAXES = GROSS REVENUE
       END
       AS taxes 
    FROM
