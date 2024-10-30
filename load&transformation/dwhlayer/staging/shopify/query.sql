@@ -1,5 +1,5 @@
 CREATE TABLE staging.shopify_order_data_prep AS
-with extract_value AS
+with extract_value AS ---CTE TO EXTRACT COL VALUES IN USABLE FORM
 (
    SELECT
       created_at,
@@ -23,7 +23,7 @@ with extract_value AS
       financial_status <> 'voided' 
 )
 ,
-customer_and_blank AS 
+customer_and_blank AS ---CTE TO CATEGORIZE CUST & DEAL WITH BLANK VALUES IN COL 
 (
    SELECT
       created_at,
