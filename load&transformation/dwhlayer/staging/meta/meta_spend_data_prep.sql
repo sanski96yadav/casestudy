@@ -19,6 +19,7 @@ raw.raw_meta_afterwork_campaign
 )
 Select 
 CONCAT_WS('_',date_start,campaign_name) as pk_date_campaign,---identifies unique row
+date_start as date,
 campaign_id,
 campaign_name,
 spend
