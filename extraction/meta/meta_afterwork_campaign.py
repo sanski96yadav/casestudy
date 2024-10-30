@@ -84,7 +84,7 @@ def import_csv_to_postgres(conn, schema_name, table_name, csv_file_path):
 # Connection details
 dbname = "klar"
 user = "postgres"
-password = "81375"
+password = "*****"
 host = "localhost"  # Or your host address
 port = "5433"  # Default PostgreSQL port
 
