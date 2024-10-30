@@ -8,15 +8,15 @@ with extract_value AS
       LAG(created_at) OVER (PARTITION BY customer_id 
    ORDER BY
       created_at) as prev_order,--- TO IDENTIFY RETURN CUSTOMER AS RETURN CUSTOMER WILL HAVE MORE THAN 1 CREATED AT DATE
-      SUBSTRING(discount_code_type FROM '([a-zA-Z_]+)') AS discount_code_type,--- TO EXTRACT VALUES FROM LIST
-      SUBSTRING(discount_application_value FROM '([0-9]+(\.[0-9]+)?)') AS discount_application_value,--- TO EXTRACT VALUES FROM LIST, PATTERN IN CIRCULAR BRACKET IS OPTIONAL AS FEW VALUES ARE IN DECIMAL FORM
-      SUBSTRING(discount_application_value_type FROM '([a-zA-Z_]+)') AS discount_application_value_type,--- TO EXTRACT VALUES TYPE FROM LIST
-      SPLIT_PART(REPLACE(REPLACE(line_item_price, '[', ''), ']', ''), ',', 1) AS line_item1_price,
-      TRIM(SPLIT_PART(REPLACE(REPLACE(line_item_price, '[', ''), ']', ''), ',', 2)) AS line_item2_price,
-      SPLIT_PART(REPLACE(REPLACE(line_item_quantity, '[', ''), ']', ''), ',', 1) AS line_item1_quantity,
-      TRIM(SPLIT_PART(REPLACE(REPLACE(line_item_quantity, '[', ''), ']', ''), ',', 2)) AS line_item2_quantity,
-      SUBSTRING(shipping_line_price FROM '([0-9]+\.[0-9]+?)') AS shipping_line_price,
-      REPLACE(REPLACE(refund_transactions_amount, '[', ''), ']', '') AS refund_amount 
+      SUBSTRING(discount_code_type FROM '([a-zA-Z_]+)') AS discount_code_type,--- TO EXTRACT VALUES FROM LIST BASED ON PATTERN, ONE OR MORE ALPHABETS (SMALL OR CAP) AND UNDERSCORES
+      SUBSTRING(discount_application_value FROM '([0-9]+(\.[0-9]+)?)') AS discount_application_value,--- TO EXTRACT VALUES FROM LIST BASED ON PATTERN, ONE OR MORE DIGITS FORMING INTEGERS OR DECIMAL NUMBERS. (\.[0-9]+)? IS OPTIONAL TO MATCH DECIMAL NUMBERS AS NOT ALL VALUES ARE INTEGERS IN COLUMN 
+      SUBSTRING(discount_application_value_type FROM '([a-zA-Z_]+)') AS discount_application_value_type,--- TO EXTRACT VALUES FROM LIST BASED ON PATTERN, ONE OR MORE ALPHABETS (SMALL OR CAP) AND UNDERSCORES
+      SPLIT_PART(REPLACE(REPLACE(line_item_price, '[', ''), ']', ''), ',', 1) AS line_item1_price, ---FIRST REMOVES OPENING SQUARE BRACKET THEN CLOSING ONE, AS REPLACEMENT STRING IS EMPTY. THEN SPLIT THE STRING BY COMMA AND OUTPUT IS FIRST PART OF THE SPLIT
+      TRIM(SPLIT_PART(REPLACE(REPLACE(line_item_price, '[', ''), ']', ''), ',', 2)) AS line_item2_price,--- SAME AS ABOVE BUT OUTPUT IS SECOND PART OF THE STRING i.e. AFTER COMMA. TRIM IS USED TO REMOVE SPACE AFTER COMMA AND BEFORE FIRST DIGIT
+      SPLIT_PART(REPLACE(REPLACE(line_item_quantity, '[', ''), ']', ''), ',', 1) AS line_item1_quantity,---FIRST REMOVES OPENING SQUARE BRACKET THEN CLOSING ONE, AS REPLACEMENT STRING IS EMPTY. THEN SPLIT THE STRING BY COMMA AND OUTPUT IS FIRST PART OF THE SPLIT
+      TRIM(SPLIT_PART(REPLACE(REPLACE(line_item_quantity, '[', ''), ']', ''), ',', 2)) AS line_item2_quantity,--- SAME AS ABOVE BUT OUTPUT IS SECOND PART OF THE STRING i.e. AFTER COMMA. TRIM IS USED TO REMOVE SPACE AFTER COMMA AND BEFORE FIRST DIGIT
+      SUBSTRING(shipping_line_price FROM '([0-9]+\.[0-9]+?)') AS shipping_line_price,--- TO EXTRACT VALUES FROM LIST BASED ON PATTERN, ONE OR MORE DIGITS FORMING INTEGERS OR DECIMAL NUMBERS. (\.[0-9]+)? IS OPTIONAL TO MATCH DECIMAL NUMBERS AS NOT ALL VALUES ARE INTEGERS IN COLUMN
+      REPLACE(REPLACE(refund_transactions_amount, '[', ''), ']', '') AS refund_amount ---FIRST REMOVES 2 OPENING SQUARE BRACKET THEN 2 CLOSING ONES, AS REPLACEMENT STRING IS EMPTY
    FROM
       raw.raw_shopify_order 
    WHERE
