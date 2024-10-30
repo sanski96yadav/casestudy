@@ -253,7 +253,7 @@ nulltozero AS ---TO ASSIGN 0 TO NULL VALUES
       revenuecalc 
 )
 SELECT
-   CONCAT_WS('_', created_at, customer_id) AS pk_shopify_order,
+   CONCAT_WS('_', created_at, customer_id) AS pk_shopify_order,---CUSTOMER ID & ORDER CREATED AT TOGETHER FORM A PRI KEY FOR THE TABLE
    created_at,
    customer_id,
    financial_status,
