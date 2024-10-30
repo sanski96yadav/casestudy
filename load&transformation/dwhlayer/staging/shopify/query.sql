@@ -74,7 +74,7 @@ customer_and_blank AS ---CTE TO CATEGORIZE CUST & DEAL WITH BLANK VALUES IN COL
    FROM
       extract_value 
 )
-, datatypes AS 
+, datatypes AS ---CTE TO ASSIGN CORRECT DATATYPES TO COL
 (
    SELECT
       created_at,
@@ -94,7 +94,7 @@ customer_and_blank AS ---CTE TO CATEGORIZE CUST & DEAL WITH BLANK VALUES IN COL
       customer_and_blank 
 )
 ,
-nulltozero AS  
+nulltozero AS ---TO ASSIGN 0 TO NULL VALUES
 (
    SELECT
       created_at,
@@ -114,7 +114,7 @@ nulltozero AS
          ELSE
             unit_price_item2 
       END
-      AS unit_price_item_2, 
+      AS unit_price_item_2, --- ROWS WITH NULL CAN'T BE USED IN FURTHER CALCULATIONS SO REPLACED BY 0
       CASE
          WHEN
             quantity_item2 IS NULL 
@@ -123,14 +123,14 @@ nulltozero AS
          ELSE
             quantity_item2 
       END
-      AS quantity_item_2, 
+      AS quantity_item_2,  --- ROWS WITH NULL CAN'T BE USED IN FURTHER CALCULATIONS SO REPLACED BY 0
       CASE
          WHEN
             shipping_line_price IS NULL 
          THEN
             0 
          ELSE
-            shipping_line_price 
+            shipping_line_price  --- ROWS WITH NULL CAN'T BE USED IN FURTHER CALCULATIONS SO REPLACED BY 0
       END
       AS shipping_price, 
       CASE
@@ -141,11 +141,11 @@ nulltozero AS
          ELSE
             refund 
       END
-      AS refund_value 
+      AS refund_value  --- ROWS WITH NULL CAN'T BE USED IN FURTHER CALCULATIONS SO REPLACED BY 0
    FROM
       datatypes 
 )
-, calculation AS  
+, calculation AS ---CALCULATED COLS ARE CREATED
 (
    SELECT
       created_at,
@@ -158,7 +158,7 @@ nulltozero AS
       (
          unit_price_item_1*quantity_item_1
       )
-       + (unit_price_item_2*quantity_item_2) AS order_amount,
+       + (unit_price_item_2*quantity_item_2) AS order_amount,---ONE ORDER CAN CONTAIN 2 PRODUCTS SO SELLING PRICE SP FOR EACH PRODUCT IS CALCULATED AND THEN ADDED UP TO FIND TOTAL SP FOR THAT ORDER
       CASE
          WHEN
             discount_code_type = 'shipping' 
@@ -167,11 +167,12 @@ nulltozero AS
          ELSE
             shipping_price 
       END
-      AS shipping, refund_value 		--total_tax
+      AS shipping, ---TO CONSIDER DISCOUNT IN SHIPPING PRICE. ASSUMED THAT SHIPPING PRICE DISCOUNT IS ALWAYS 100% OF SHIPPING PRICE
+      refund_value 		
    FROM
       nulltozero 
 )
-, discountvalues AS  
+, discountvalues AS --- calculates discount column
 (
    SELECT
       created_at,
@@ -183,18 +184,21 @@ nulltozero AS
       discount_application_value,
       CASE
          WHEN
-            discount_application_value_type = 'fixed_amount' 
+            discount_application_value_type = 'fixed_amount'--- FIXED AMOUNT IS DISCOUNT VALUE IN SOME CASES
          THEN
             discount_application_value 
          WHEN
-            discount_application_value_type = 'percentage' 
-            AND discount_code_type <> 'shipping' 
+            discount_application_value_type = 'percentage'---NEED TO CALCULATE DISCOUNT BASED ON PERCENTAGE
+            AND discount_code_type <> 'shipping'---SHIPPING EXCLUDED HERE AS IT IS ALREADY INCLUDED IN PREV STEP, 'calculation'
          THEN
-            round((discount_application_value / 100)*order_amount, 2) 
+            round((discount_application_value / 100)*order_amount, 2)--- ASSUMED THAT IF DISCOUNT CODE IS NOT 'shipping' THEN % DISCOUNT IS CALCULATED ON ORDER AMOUNT i.e. SP OF RESPECTIVE ORDER
          ELSE
             0 
       END
-      AS discount, order_amount, shipping, refund_value 
+      AS discount, 
+    order_amount, 
+    shipping, 
+    refund_value 
    FROM
       calculation 
 )
