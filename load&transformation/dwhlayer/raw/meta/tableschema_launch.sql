@@ -1,4 +1,4 @@
-CREATE TABLE raw_meta_launch_campaign (
+CREATE TABLE raw.raw_meta_launch_campaign (
     account_currency TEXT,
     account_name TEXT,
     campaign_id BIGINT,
