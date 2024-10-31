@@ -13,7 +13,7 @@ fields = [
     'date_start,date_stop,impressions,spend'
 ]
 
-# URL
+# URL to fetch data from Insights API
 url = f"https://graph.facebook.com/v21.0/{campaign_id}/insights?&date_preset=maximum&time_increment=1&limit=5000"
 params = {
     'fields': ','.join(fields),
