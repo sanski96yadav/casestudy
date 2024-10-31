@@ -15,3 +15,13 @@ The casestudy is divided into three main following parts and each part is furthe
 * Shopify data was available in csv file and the file was uploaded into PostgreSQL
 * The file had 157 columns and not all columns were needed so many columns were deleted before uploading the file
 * Shopify data is available from 3rd May 2024 to 5th August 2024
+
+```load&transformation```: 
+* Meta data was loaded into PostgreSQL RDBMS using psycopg2 library in Python that connects to PostgreSQL
+* Shopify data was loaded by importing csv file through PostgreSQL interface
+* Meta and Shopify data was transformed in 3 layers, ```raw, staging, mart``` and data moves from raw layer to staging and staging to mart
+* The tables in mart layer are created based on use case given and further used in Power BI
+* In ```raw layer```, data is kept as it is only constraints and pri key are assigned
+* In ```staging layer```, raw data goes under different transformations like change in data type, extraction of values in usable form, creation of calculated columns, appending of data
+*  Meta data for 2 campaigns stored in 2 raw tables is appended in this stage
+*  Shopify data is prepared to give columns like gross revenue, discounts, taxes, return value, shipping price, net revenue based on [KLAR's logic](https://help.getklar.com/en/articles/6127409-revenue-defintion-klar-vs-shopify)
