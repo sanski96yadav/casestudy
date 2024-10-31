@@ -11,7 +11,10 @@ Three main folders:
 * [```visualization:```](visualization) The data from the mart layer is imported in Power BI for visualization. The fact table imported is joined to the ```dim date``` table on the date column in Power BI to visualize data on the date level. The KPIs like CAC, MER, aMER and %MoM, %DoD for them are also calculated in Power BI. In addition, ```random target``` values are added for CAC, MER, and aMER and displayed on the dashboard just for illustration. The KPIs are calculated based on the KLAR logic provided on the website. Adjusted MER is assumed as Acquisition MER
 
 | Main folders      | Sub-folders       | Description  |
-| ------------- |:-------------:| -----:|
+| ------------- |-------------| -----:|
 | [extraction](extraction)     | [meta](extraction/meta) | $1600 |
-| [load&transformation](load&transformation)    | centered      |   $12 |
+| [extraction](extraction)     | [shopify](extraction/shopify) | $1600 |
+| [extraction](extraction)     | [setupinstructions](extraction/setupinstructions) | $1600 |
+| [load&transformation](load&transformation)    | [raw](load&transformation/dwhlayer/raw)      |   $12 |
+| [load&transformation](load&transformation)    | [staging](load&transformation/dwhlayer/staging)      |   $12 |
 | [visualization](visualization) | are neat      |    $1 |
