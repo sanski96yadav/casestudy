@@ -3,40 +3,39 @@ import pandas as pd
 import psycopg2
 import csv
 
-# Define your ad account ID and access token
-campaign_id = '*****'  # Replace with your actual ad account ID
-access_token = '*****'  # Replace with your actual access token
 
-# Define the fields you want to fetch
+campaign_id = '*****' 
+access_token = '*****' 
+
+# Columns to fetch
 fields = [
     'account_currency,account_name,ad_id,ad_name,adset_id,'
     'adset_name,campaign_id,campaign_name,clicks,'
     'date_start,date_stop,impressions,spend'
 ]
 
-# Construct the URL
+# URL to fetch data from Insights API
 url = f"https://graph.facebook.com/v21.0/{campaign_id}/insights?&date_preset=maximum&time_increment=1&limit=5000"
 params = {
     'fields': ','.join(fields),
     'access_token': access_token,
 }
 
-# Make the GET request to fetch data
+# GET request to fetch data from API
 response = requests.get(url, params=params)
 # to see all columns with values
 pd.set_option('display.max_columns', None)
 
-# Convert the response to JSON
+# Converts the response to JSON
 data = response.json()
 
-# Load data into a pandas DataFrame
+# Loads data into DataFrame
 df = pd.DataFrame(data['data'])
 
-# Display the data in a tabular format
-
+# Generates csv file
 df.to_csv('raw_meta_afterwork_campaign.csv', index=False)
 
-# Function to connect to PostgreSQL
+# To connect to PostgreSQL
 def connect_to_postgres(dbname, user, password, host, port):
     try:
         conn = psycopg2.connect(
@@ -53,29 +52,27 @@ def connect_to_postgres(dbname, user, password, host, port):
         return None
 
 
-# Function to import CSV data into PostgreSQL
+# To import CSV data into PostgreSQL
 def import_csv_to_postgres(conn, schema_name, table_name, csv_file_path):
     try:
-        # Open a cursor to perform database operations
+        # Opens a cursor to perform database operations
         cur = conn.cursor()
 
-        # Open the CSV file
+        # Opens the CSV file
         with open(csv_file_path, 'r') as f:
             reader = csv.reader(f)
-            # Skip the header row (if your CSV file has a header)
+            # Skips the header row 
             next(reader)
 
-            # Loop through the CSV and insert each row into the table
+            # Function to insert each row into the table
             for row in reader:
-                # Customize this query based on your table structure and CSV format
-                query = f"INSERT INTO {schema_name}.{table_name} VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"  # Update %s based on the number of columns
-                cur.execute(query, row)
+                query = f"INSERT INTO {schema_name}.{table_name} VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"  #9 columns in csv file so 9 '%s'
 
         # Commit the transaction
         conn.commit()
-        print("CSV data imported successfully!")
+        print("CSV data imported successfully!") # to know if successful after code execution
 
-        # Close the cursor and connection
+        # Closes the cursor and connection
         cur.close()
     except Exception as e:
         print(f"Error: {e}")
@@ -85,22 +82,22 @@ def import_csv_to_postgres(conn, schema_name, table_name, csv_file_path):
 dbname = "klar"
 user = "postgres"
 password = "*****"
-host = "localhost"  # Or your host address
-port = "5433"  # Default PostgreSQL port
+host = "localhost"  
+port = "5433" 
 
-# File path to your CSV file
-csv_file_path = "raw_meta_afterwork_campaign.csv"
+# CSV file taht will be loaded
+csv_file_path = "raw_meta_afterwork_campaign.csv" 
 
-# Table name in PostgreSQL
+# Schema & table name in PostgreSQL
 schema_name = "raw"
 table_name = "raw_meta_afterwork_campaign"
 
-# Connect to PostgreSQL
+# Connects to PostgreSQL
 conn = connect_to_postgres(dbname, user, password, host, port)
 
 if conn:
-    # Import CSV into PostgreSQL
+    # Imports CSV into PostgreSQL
     import_csv_to_postgres(conn, schema_name, table_name, csv_file_path)
 
-    # Close the connection
+    # Closes the connection
     conn.close()
