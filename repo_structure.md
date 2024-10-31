@@ -7,7 +7,7 @@
 | [extraction](extraction)     | [meta](extraction/meta) | [meta_afterwork_campaign.py](extraction/meta/meta_afterwork_campaign.py) | Python code used to extract Meta data for afterwork campaign from Insights API and load it into PostgreSQL|
 | [extraction](extraction)     | [meta](extraction/meta) | [meta_data_summary.py](extraction/meta/meta_data_summary.py) | Python code used to cross-check data retrieved on date and campaign level
 | [extraction](extraction)     | [shopify](extraction/shopify) | [shopifyorder.md](extraction/shopify/shopifyorder.md) | Steps carried out to extract shopify data |
-| [extraction](extraction)     | [setupinstructions](extraction/setupinstructions) | $1600 | 
+| [extraction](extraction)     | [setupinstructions](extraction/setupinstructions) | [requirements.txt](extraction/setupinstructions/requirements.txt) | For environment set up
 | [load&transformation](load&transformation)    | [raw](load&transformation/dwhlayer/raw)      |   [tableschema_launch.sql](load&transformation/dwhlayer/raw/meta/tableschema_launch.sql) | SQL query used to create raw_meta_launch_campaign table schema in PostgreSQL|
 | [load&transformation](load&transformation)    | [raw](load&transformation/dwhlayer/raw)      |   [tableschema_afterwork.sql](load&transformation/dwhlayer/raw/meta/tableschema_afterwork.sql) | SQL query used to create raw_meta_afterwork_campaign table schema in PostgreSQL|
 | [load&transformation](load&transformation)    | [raw](load&transformation/dwhlayer/raw)      |   [raw_meta_launch_campaign.md](load&transformation/dwhlayer/raw/meta/raw_meta_launch_campaign.md) | Steps taken to load data in raw_meta_launch_campaign table in raw layer of data warehouse|
