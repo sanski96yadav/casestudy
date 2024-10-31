@@ -19,6 +19,7 @@ The casestudy is divided into three main following parts and each part is furthe
 ```load&transformation```: 
 * Meta data was loaded into PostgreSQL RDBMS using psycopg2 library in Python that connects to PostgreSQL
 * Shopify data was loaded by importing csv file through PostgreSQL interface
+* The columns in both Meta and Shopify data were understood by referring to the [Insights API](https://developers.facebook.com/docs/marketing-api/reference/ad-account/insights) and [Shopify](https://help.shopify.com/en/manual/fulfillment/managing-orders/exporting-orders) documentation respectively 
 * Meta and Shopify data was transformed in 3 layers, ```raw, staging, mart``` and data moves from raw layer to staging and staging to mart
 * The tables in mart layer are created based on use case given and further used in Power BI
 * In ```raw layer```, data is kept as it is only constraints and pri key are assigned
