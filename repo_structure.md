@@ -10,11 +10,11 @@ Three main folders:
   
 * [```visualization:```](visualization) The data from the mart layer is imported in Power BI for visualization. The fact table imported is joined to the ```dim date``` table on the date column in Power BI to visualize data on the date level. The KPIs like CAC, MER, aMER and %MoM, %DoD for them are also calculated in Power BI. In addition, ```random target``` values are added for CAC, MER, and aMER and displayed on the dashboard just for illustration. The KPIs are calculated based on the KLAR logic provided on the website. Adjusted MER is assumed as Acquisition MER
 
-| Main folders      | Sub-folders       | Files |
-| ------------- |-------------| ----- |
-| [extraction](extraction)     | [meta](extraction/meta) | [meta_launch_campaign.py](extraction/meta/meta_launch_campaign.py) |
-| [extraction](extraction)     | [meta](extraction/meta) | [meta_afterwork_campaign.py](extraction/meta/meta_afterwork_campaign.py) |
-| [extraction](extraction)     | [meta](extraction/meta) | [meta_data_summary.py](extraction/meta/meta_data_summary.py) |
+| Main folders      | Sub-folders       | Files | Description |
+| ------------- |-------------| ----- |-------------|
+| [extraction](extraction)     | [meta](extraction/meta) | [meta_launch_campaign.py](extraction/meta/meta_launch_campaign.py) | Python code used to extract Meta data for launch campaign from Insights API and load it into PostgreSQL|
+| [extraction](extraction)     | [meta](extraction/meta) | [meta_afterwork_campaign.py](extraction/meta/meta_afterwork_campaign.py) | Python code used to extract Meta data for afterwork campaign from Insights API and load it into PostgreSQL|
+| [extraction](extraction)     | [meta](extraction/meta) | [meta_data_summary.py](extraction/meta/meta_data_summary.py) | Python code used to cross-check data retrieved on date and campaign level
 | [extraction](extraction)     | [shopify](extraction/shopify) | [shopifyorder.md](extraction/shopify/shopifyorder.md) |
 | [extraction](extraction)     | [setupinstructions](extraction/setupinstructions) | $1600 |
 | [load&transformation](load&transformation)    | [raw](load&transformation/dwhlayer/raw)      |   [tableschema_launch.sql](load&transformation/dwhlayer/raw/meta/tableschema_launch.sql) |
