@@ -20,22 +20,21 @@ params = {
     'access_token': access_token,
 }
 
-# Make the GET request to fetch data
+# GET request to fetch data from API
 response = requests.get(url, params=params)
 # to see all columns with values
 pd.set_option('display.max_columns', None)
 
-# Convert the response to JSON
+# Converts the response to JSON
 data = response.json()
 
-# Load data into a pandas DataFrame
+# Loads data into a pandas DataFrame
 df = pd.DataFrame(data['data'])
 
-# Display the data in a tabular format
-
+# Generates csv file
 df.to_csv('raw_meta_launch_campaign.csv', index=False)
 
-# Function to connect to PostgreSQL
+# To connect to PostgreSQL
 def connect_to_postgres(dbname, user, password, host, port):
     try:
         conn = psycopg2.connect(
@@ -52,7 +51,7 @@ def connect_to_postgres(dbname, user, password, host, port):
         return None
 
 
-# Function to import CSV data into PostgreSQL
+# Imports CSV data into PostgreSQL
 def import_csv_to_postgres(conn, schema_name, table_name, csv_file_path):
     try:
         # Open a cursor to perform database operations
@@ -87,10 +86,10 @@ password = "*****"
 host = "localhost"  # Or your host address
 port = "5433"  # Default PostgreSQL port
 
-# File path to your CSV file
+# CSV file taht will be loaded
 csv_file_path = "raw_meta_launch_campaign.csv"
 
-# Table name in PostgreSQL
+# Schema and table name in PostgreSQL
 schema_name = "raw"
 table_name = "raw_meta_launch_campaign"
 
