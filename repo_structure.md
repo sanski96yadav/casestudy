@@ -1,4 +1,4 @@
-# casestudy
+# casestudy repo structure
 
 The casestudy folder consists of three main folders and their sub-folders. All the main folders are further divided into ```meta``` and ```shopify```
 
@@ -15,13 +15,13 @@ Three main folders:
 | [extraction](extraction)     | [meta](extraction/meta) | [meta_launch_campaign.py](extraction/meta/meta_launch_campaign.py) | Python code used to extract Meta data for launch campaign from Insights API and load it into PostgreSQL|
 | [extraction](extraction)     | [meta](extraction/meta) | [meta_afterwork_campaign.py](extraction/meta/meta_afterwork_campaign.py) | Python code used to extract Meta data for afterwork campaign from Insights API and load it into PostgreSQL|
 | [extraction](extraction)     | [meta](extraction/meta) | [meta_data_summary.py](extraction/meta/meta_data_summary.py) | Python code used to cross-check data retrieved on date and campaign level
-| [extraction](extraction)     | [shopify](extraction/shopify) | [shopifyorder.md](extraction/shopify/shopifyorder.md) |
-| [extraction](extraction)     | [setupinstructions](extraction/setupinstructions) | $1600 |
-| [load&transformation](load&transformation)    | [raw](load&transformation/dwhlayer/raw)      |   [tableschema_launch.sql](load&transformation/dwhlayer/raw/meta/tableschema_launch.sql) |
-| [load&transformation](load&transformation)    | [raw](load&transformation/dwhlayer/raw)      |   [tableschema_afterwork.sql](load&transformation/dwhlayer/raw/meta/tableschema_afterwork.sql) |
-| [load&transformation](load&transformation)    | [raw](load&transformation/dwhlayer/raw)      |   [raw_meta_launch_campaign.md](load&transformation/dwhlayer/raw/meta/raw_meta_launch_campaign.md) |
-| [load&transformation](load&transformation)    | [raw](load&transformation/dwhlayer/raw)      |   [raw_meta_afterwork_campaign.md](load&transformation/dwhlayer/raw/meta/raw_meta_afterwork_campaign.md) |
-| [load&transformation](load&transformation)    | [raw](load&transformation/dwhlayer/raw)      |   [table_schema.sql](load&transformation/dwhlayer/raw/shopify/table_schema.sql) |
+| [extraction](extraction)     | [shopify](extraction/shopify) | [shopifyorder.md](extraction/shopify/shopifyorder.md) | Steps carried out to extract shopify data |
+| [extraction](extraction)     | [setupinstructions](extraction/setupinstructions) | $1600 | 
+| [load&transformation](load&transformation)    | [raw](load&transformation/dwhlayer/raw)      |   [tableschema_launch.sql](load&transformation/dwhlayer/raw/meta/tableschema_launch.sql) | SQL query used to create raw_meta_afterwork_campaign table schema in PostgreSQL|
+| [load&transformation](load&transformation)    | [raw](load&transformation/dwhlayer/raw)      |   [tableschema_afterwork.sql](load&transformation/dwhlayer/raw/meta/tableschema_afterwork.sql) | SQL query used to create raw_meta_launch_campaign table schema in PostgreSQL|
+| [load&transformation](load&transformation)    | [raw](load&transformation/dwhlayer/raw)      |   [raw_meta_launch_campaign.md](load&transformation/dwhlayer/raw/meta/raw_meta_launch_campaign.md) | Steps taken to load data in raw_meta_launch_campaign table in raw layer of data warehouse|
+| [load&transformation](load&transformation)    | [raw](load&transformation/dwhlayer/raw)      |   [raw_meta_afterwork_campaign.md](load&transformation/dwhlayer/raw/meta/raw_meta_afterwork_campaign.md) | Steps taken to load data in raw_meta_afterwork_campaign table in raw layer of data warehouse|
+| [load&transformation](load&transformation)    | [raw](load&transformation/dwhlayer/raw)      |   [table_schema.sql](load&transformation/dwhlayer/raw/shopify/table_schema.sql) | SQL query used to create raw_shopify_order table  schema in PostgreSQL |
 | [load&transformation](load&transformation)    | [raw](load&transformation/dwhlayer/raw)      |   [raw_shopify_order.md](load&transformation/dwhlayer/raw/shopify/raw_shopify_order.md) |
 | [load&transformation](load&transformation)    | [staging](load&transformation/dwhlayer/staging)      |   [meta_spend_data_prep.sql](load&transformation/dwhlayer/staging/meta/meta_spend_data_prep.sql) |
 | [load&transformation](load&transformation)    | [staging](load&transformation/dwhlayer/staging)      |   [shopify_order_data_prep.sql](load&transformation/dwhlayer/staging/shopify/shopify_order_data_prep.sql)|
