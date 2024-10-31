@@ -12,6 +12,6 @@ Three main folders:
 
 | Main folders      | Sub-folders       | Description  |
 | ------------- |:-------------:| -----:|
-| [extraction](extraction)     | right-aligned | $1600 |
+| [extraction](extraction)     | [meta](extraction/meta) | $1600 |
 | [load&transformation](load&transformation)    | centered      |   $12 |
 | [visualization](visualization) | are neat      |    $1 |
