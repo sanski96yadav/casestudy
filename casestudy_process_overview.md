@@ -29,7 +29,7 @@ The casestudy is divided into three main following parts and each part is furthe
 *  Shopify data is prepared to give columns like gross revenue, discounts, taxes, return value, shipping price, net revenue based on [KLAR's logic](https://help.getklar.com/en/articles/6127409-revenue-defintion-klar-vs-shopify)
 * In ```mart layer``` the respective periodic snapshots fact tables (daily level) for Meta and Shopify data were created by aggregation of data. Both the data was also merged in this layer using date column, as date is the common field and also we want to have daily overview in dashboard
 * Fact table for Meta data was left joined to the fact table for Shopify data, as aim is to analyze marketing performance. Left join will ensure complete marketing data is included after merge
-* Based on the use case, dimensional columns like campaigns, cities, ad names were not needed, so dimension tables (dim tables) were not created
+* Based on the use case and nature of the fact table needed, dimension tables (dim tables) for campaigns, cities, ad names were not created
 * In case dim tables were created, star schema would have been preferred as it is good for read performance
 
 
