@@ -26,15 +26,15 @@ The casestudy is divided into three main following parts and each part is furthe
 * In ```staging layer```, raw data goes under different transformations like change in data type, extraction of values in usable form, creation of calculated columns, appending of data
 *  Meta data for 2 campaigns stored in 2 raw tables is appended in this stage
 *  Shopify data is prepared to give columns like gross revenue, discounts, taxes, return value, shipping price, net revenue based on [KLAR's logic](https://help.getklar.com/en/articles/6127409-revenue-defintion-klar-vs-shopify)
-* In ```mart layer``` the respective periodic snapshots fact tables (daily level) for Meta and Shopify data were created by aggregation of data. Botht the datas were also merged in this layer using date column, as date is the common field and also we want to have daily overview in dashboard
+* In ```mart layer``` the respective periodic snapshots fact tables (daily level) for Meta and Shopify data were created by aggregation of data. Both the data was also merged in this layer using date column, as date is the common field and also we want to have daily overview in dashboard
 
 
 ```visualization```:
-* The merged fact table (meta = shopify) was added in Power BI through exporting csv file from PostgreSQL and importing it in Power BI. Direct connection to PostgreSQL was throwing an error
+* The merged fact table (meta + shopify) was added in Power BI through exporting csv file from PostgreSQL and importing it in Power BI. Direct connection to PostgreSQL was throwing an error
 * The fact table was then joined with ```dim date``` table in Power BI to present the KPIs wrt to dim date table columns. ```dim date``` table was created in Power BI itself
 * KPIs like CAC, MER, Adjusted MER (aMER) and their %MoM, %DoD were calculated in Power BI using DAX
 * Adjusted MER was assumed as Acquisition MER
-* CAC & aMER were calculated on Net Revenue. Discounts, returns, taxes, shipping price were taken care of in calculation of Net Revenue
+* MER & aMER were calculated on Net Revenue. Discounts, returns, taxes, shipping price were taken care of in calculation of Net Revenue
 * The 3 KPIs are displayed in cards with benchmark as %MoM to give quick summary
 * Further, 3 KPIs are displayed on daily level for monitoring and understanding daily performance. As the date level was needed, the line graph is most suitable to showcase KPIs over time
 * In line graph, secondary line for ```target``` is provided again for benchmark. ```target``` values are random and not calculated from data
