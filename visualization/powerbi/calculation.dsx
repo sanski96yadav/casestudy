@@ -1,5 +1,0 @@
-DAX:
-
-Customer Acquisition Cost (CAC) = DIVIDE([Ad Spend], [New Customers])
-New Customers = SUM(fact_marketing_efficiency_daily[count_new_customers])
-Acquisition Marketing Efficiency Ratio (aMER) = DIVIDE([New Customer Revenue],[Ad Spend])
