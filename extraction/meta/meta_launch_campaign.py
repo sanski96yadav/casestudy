@@ -3,17 +3,17 @@ import pandas as pd
 import psycopg2
 import csv
 
-# Define your ad account ID and access token
-campaign_id = '*****'  # Replace with your actual ad account ID
+
+campaign_id = '*****'  
 access_token = '*****'
-# Define the fields you want to fetch
+# Columns to fetch
 fields = [
     'account_currency,account_name,ad_id,ad_name,adset_id,'
     'adset_name,campaign_id,campaign_name,clicks,'
     'date_start,date_stop,impressions,spend'
 ]
 
-# Construct the URL
+# URL
 url = f"https://graph.facebook.com/v21.0/{campaign_id}/insights?&date_preset=maximum&time_increment=1&limit=5000"
 params = {
     'fields': ','.join(fields),
