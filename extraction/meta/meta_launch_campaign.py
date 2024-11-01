@@ -20,15 +20,13 @@ params = {
     'access_token': access_token,
 }
 
-# GET request to fetch data from API
+# GET request to fetch data from API. Output is HTTP Response Content (JSON content) is stored in response variable
 response = requests.get(url, params=params)
-# to see all columns with values
-pd.set_option('display.max_columns', None)
 
-# Converts the response to JSON
+# # Converts the JSON content into Python dictionary, making data easier to work in Python
 data = response.json()
 
-# Loads data into a pandas DataFrame
+# Loads data in tabular form
 df = pd.DataFrame(data['data'])
 
 # Generates csv file
