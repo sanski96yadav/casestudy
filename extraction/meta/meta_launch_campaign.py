@@ -30,7 +30,7 @@ data = response.json()
 df = pd.DataFrame(data['data'])
 
 # Generates csv file
-df.to_csv('raw_meta_launch_campaign.csv', index=False)
+df.to_csv('data/raw_meta_launch_campaign.csv', index=False)
 
 # To connect to PostgreSQL
 def connect_to_postgres(dbname, user, password, host, port):
