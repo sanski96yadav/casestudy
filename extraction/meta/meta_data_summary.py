@@ -14,7 +14,7 @@ fields = [
     'account_currency,account_name,impressions,spend'
 ]
 
-# URL to fetch data from API
+# URL to fetch data from Insights API. 'date_preset=maximun' returns data for entire history and therefore output can be used for cross-validation
 url = f"https://graph.facebook.com/v21.0/{ad_account_id}/insights?&date_preset=maximum"
 params = {
     'fields': ','.join(fields),
