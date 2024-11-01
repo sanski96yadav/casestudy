@@ -14,7 +14,7 @@ fields = [
     'date_start,date_stop,impressions,spend'
 ]
 
-# URL to fetch data from Insights API
+# URL to fetch data from Insights API. 'date_preset=maximun' returns data for entire history, 'time_increment=1' gives data on date level
 url = f"https://graph.facebook.com/v21.0/{campaign_id}/insights?&date_preset=maximum&time_increment=1&limit=5000"
 params = {
     'fields': ','.join(fields),
