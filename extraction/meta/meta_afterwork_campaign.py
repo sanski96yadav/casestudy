@@ -30,9 +30,6 @@ data = response.json()
 # Loads data in tabular form
 df = pd.DataFrame(data['data'])
 
-# to see all columns with values
-pd.set_option('display.max_columns', None)
-
 # Generates csv file
 df.to_csv('raw_meta_afterwork_campaign.csv', index=False)
 
