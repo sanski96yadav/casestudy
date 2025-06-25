@@ -77,7 +77,7 @@ def import_csv_to_postgres(conn, schema_name, table_name, csv_file_path):
 
 
 # Connection details
-dbname = "klar"
+dbname = "ecom"
 user = "postgres"
 password = "*****"
 host = "localhost"  
