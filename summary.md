@@ -12,4 +12,4 @@ Overview of the analysis:
 
 Audience of the dashboard:
 
-- The whole marketing team including the team lead
+- The whole marketing team including the team lead, hence, the KPI cards and trend lines are provided at the top of the dadhboard for the quick overview by stakeholders on leadership position and detailed overview at the bottom for team members use
