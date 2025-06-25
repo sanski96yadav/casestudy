@@ -21,3 +21,4 @@
 | [load&transformation](load&transformation)    | [mart](load&transformation/dwhlayer/mart)      |  [fact_order_daily.sql](load&transformation/dwhlayer/mart/shopify/fact_order_daily.sql)  | SQL query used to create fact_order_daily table in mart layer of data warehouse|
 | [load&transformation](load&transformation)    | [mart](load&transformation/dwhlayer/mart)      |  [fact_marketing_efficiency_daily.sql](load&transformation/dwhlayer/mart/combined/fact_marketing_efficiency_daily.sql)  | SQL query used to create fact_marketing_efficiency_daily table in mart layer of data warehouse|
 | [visualization](visualization) | [powerbi](visualization/powerbi)      |    [calculations.md](visualization/powerbi/calculations.md) | KPIs calculation done in Power BI|
+| [visualization](visualization) | [powerbi](visualization/powerbi)      |    [dashboard.pdf](visualization/powerbi/dashboard.pdf) | Dashboard created in Power BI|
