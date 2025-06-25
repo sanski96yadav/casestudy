@@ -13,3 +13,7 @@ Overview of the analysis:
 Audience of the dashboard:
 
 - The whole marketing team including the team lead, hence, the KPI cards and trend lines are provided at the top of the dashboard for a quick overview and the table at the bottom for deep dive
+
+Disclaimer:
+
+- Due to data privacy, instead of the Power BI (.pbix) file, a PDF form of the dashboard is uploaded. The data in the PDF is anonymised or kept blank for the same purpose.
