@@ -12,4 +12,4 @@ Overview of the analysis:
 
 Audience of the dashboard:
 
-- The whole marketing tea,m including the team lead
+- The whole marketing team including the team lead
