@@ -1,5 +1,3 @@
-# casestudy process overview
-
 The casestudy is divided into three main following parts and each part is further divided into Meta and Shopify:
 
 * ```extraction```
