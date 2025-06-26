@@ -6,11 +6,11 @@ The analysis demonstrates my ability to ```extract, transform, and analyse``` ma
 
 Overview of the analysis:
 
-- Extraction of data from Meta API - Python
+- Extraction of data from Meta API - ```Python```
 
-- Loaded and transformed data - SQL
+- Loaded and transformed data - ```SQL```
   
-- Data visualisation and analysis - Power BI
+- Data visualisation and analysis - ```Power BI```
 
 Approach followed:
 
