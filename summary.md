@@ -14,15 +14,15 @@ Overview of the analysis:
 
 Approach followed:
 
-- Requirement Gathering: The business goal and audience were understood, and KPIs were defined
+- ```Requirement Gathering```: The business goal and audience were understood, and KPIs were defined
   
-- Data Requirements: Through following top-down approach for KPIs defined, the columns needed for analysis were identified
+- ```Data Requirements```: Through following top-down approach for KPIs defined, the columns needed for analysis were identified
 
-- Data Orchestration: ELT was executed to make raw data usable for the analysis
+- ```Data Orchestration```: ELT was executed to make raw data usable for the analysis
 
-- Data Analysis: The visualizations were created in Power BI (keeping the audience in mind), and analysis was conducted using the KPIs defined
+- ```Data Analysis```: The visualizations were created in Power BI (keeping the audience in mind), and analysis was conducted using the KPIs defined
 
-- Insights and Recommendations- The analysis helped to find meaningful information and provide recommendations that will optimize marketing efforts
+- ```Insights and Recommendations```- The analysis helped to find meaningful information and provide recommendations that will optimize marketing efforts
 
 Audience of the dashboard:
 
