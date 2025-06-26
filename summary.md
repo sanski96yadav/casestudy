@@ -32,7 +32,7 @@ Disclaimer:
 
 - Due to data privacy, instead of the Power BI (.pbix) file, a PDF form of the dashboard is uploaded. The data in the PDF is anonymised or kept blank for the same purpose.
 
-Learning:
+Learnings:
 
 - Experienced the broad perspective in analysis from requirements gathering to creating a database to analysis
 
